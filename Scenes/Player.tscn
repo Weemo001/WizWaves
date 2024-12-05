@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd86g4vam4445"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_xw2u1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxhp4"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ruwqd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_valx6"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_my1lv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jouk3"]
+radius = 0.606471
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_xw2u1")
+
+[node name="Body Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_uxhp4")
+mesh = SubResource("CapsuleMesh_ruwqd")
+
+[node name="Eye" type="MeshInstance3D" parent="Body Mesh"]
+transform = Transform3D(0.657457, 0, 0, 0, 0.470263, 0, 0, 0, 0.618457, 0, 0.45484, -0.276299)
+material_override = SubResource("StandardMaterial3D_valx6")
+mesh = SubResource("SphereMesh_my1lv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_jouk3")
+
+[node name="Camera Origin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Camera Origin"]
+spring_length = 5.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="Camera Origin/SpringArm3D"]
+fov = 90.0
