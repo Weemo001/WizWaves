@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmm56vffjj30r"]
+[gd_scene load_steps=3 format=3 uid="uid://dmm56vffjj30r"]
 
 [ext_resource type="Script" path="res://Scripts/World/enemy_spawner.gd" id="1_hhtf0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_emljr"]
 
 [node name="EnemySpawner" type="Node3D"]
 script = ExtResource("1_hhtf0")
 
 [node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="SpawnArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
+shape = SubResource("BoxShape3D_emljr")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

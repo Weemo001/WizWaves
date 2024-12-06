@@ -1,7 +1,6 @@
 extends Node3D
 
 @export var enemy_scene: PackedScene # Put enemy scene here in inspector
-@export var spawn_area: NodePath # Assign in inspector
 @export var target: NodePath # Assign player node in inspector
 @export var spawn_interval: float = 1.0 
 @export var max_enemies: int = 10
@@ -21,11 +20,10 @@ func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	
 	# Get position of spawn area (Area3D) & The collision shape of the spawn area
-	var area_node = get_node(spawn_area)
-	var spawn_shape = area_node.get_node("CollisionShape3D").shape as BoxShape3D
-	var extents = spawn_shape.extents
+	var collision_shape = $SpawnArea.get_node("CollisionShape3D").shape as BoxShape3D
+	var extents = collision_shape.extents
 	
-	# Randomly generate position inside spawn shape
+	# Randomly generate position inside spawn shape based on extents of collision shape
 	var random_offset = Vector3(
 		randf_range(-extents.x, extents.x),
 		0,
@@ -33,14 +31,13 @@ func spawn_enemy():
 	)
 	
 	# Set enemy spawn position inside Area3D's collision shape + offset
-	var spawn_position = area_node.global_position + random_offset
+	var spawn_position = $SpawnArea.global_position + random_offset
 	enemy.transform.origin = spawn_position
 	
 	# Add enemy to scene, set target, and track it in list
 	enemy.target = target
 	get_parent().add_child(enemy)
 	active_enemies.append(enemy)
-
 	
 	# Remove enemy from list when deleted
 	enemy.connect("tree_exited", on_enemy_removed)

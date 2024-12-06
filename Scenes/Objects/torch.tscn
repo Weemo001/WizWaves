@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://druhbl0lql6u"]
+
+[ext_resource type="PackedScene" uid="uid://rtrctylmgyfv" path="res://Models/World/torch.glb" id="1_crlh7"]
+
+[node name="torch" instance=ExtResource("1_crlh7")]
