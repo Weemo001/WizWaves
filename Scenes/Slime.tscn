@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://n8wlch8tbxef"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_h01s2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ebl0g"]
+radius = 0.507167
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4s0u"]
+shading_mode = 0
+albedo_color = Color(0, 0.644485, 0.260874, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j38wr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dhuvl"]
+radius = 0.517937
+
+[node name="Slime" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_h01s2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_ebl0g")
+
+[node name="TempMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_g4s0u")
+mesh = SubResource("SphereMesh_j38wr")
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_dhuvl")
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

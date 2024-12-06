@@ -1,11 +1,10 @@
 extends CharacterBody3D
 
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-
 @onready var pivot: Node3D = $"Camera Origin"
+
+@export var SPEED = 5.0
 @export var sens = 0.5
+@export var health = 10
 
 func _ready():
 	# Capture mouse so it doesn't go outside of the game window
@@ -21,11 +20,7 @@ func _input(event):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
+func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
@@ -38,3 +33,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func take_damage(amount: float):
+	print("Player took " + str(amount) + " damage!")
+	health -= amount
+	if health <= 0:
+		die()
+		
+func die():
+	print("Player has died!")
