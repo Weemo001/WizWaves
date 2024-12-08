@@ -4,6 +4,7 @@ extends Node
 @export var spawn_interval: float = 0.5 # sec
 @export var max_enemies: int = 20
 @export var spawners: Array[Node3D] = []
+@export var difficulty_mod: float = 1.2
 
 var wave_counter: int = 0
 var enemies_spawned_per_wave = 0
@@ -22,11 +23,15 @@ func _ready():
 	$SpawnTimer.wait_time = spawn_interval
 
 func _on_wave_cd_timer_timeout() -> void:
-	# When wave timer times out, increment wave counter, reset current enemy counter, and start the spawn timer
+	# Timer is always running, but only executes the spawning sequence code when the spawntimer is stopped, and the array of tracked enemies is empty
 	if $SpawnTimer.is_stopped() && Global.active_enemies.size() == 0:
 		wave_counter += 1
+		
+		# Simple ramping difficulty modifier
+		max_enemies = 20 * pow(difficulty_mod, wave_counter - 1)
+		
 		enemies_spawned_per_wave = 0
-		print("Wave: " + str(wave_counter) + " has started.")
+		print("Wave: " + str(wave_counter) + " Enemies: " + str(max_enemies))
 		
 		$SpawnTimer.start()
 
