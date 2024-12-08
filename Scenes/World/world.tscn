@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://mwha5hojyas8"]
+[gd_scene load_steps=8 format=3 uid="uid://mwha5hojyas8"]
 
 [ext_resource type="PackedScene" uid="uid://fxyaba6k4gjf" path="res://Scenes/Objects/gate.tscn" id="1_0g3ou"]
+[ext_resource type="Script" path="res://Scripts/World/world.gd" id="1_io8vi"]
 [ext_resource type="PackedScene" uid="uid://druhbl0lql6u" path="res://Scenes/Objects/torch.tscn" id="2_47qaq"]
 [ext_resource type="MeshLibrary" uid="uid://b72eya0hnevef" path="res://MeshLib/meshlib_dungeontileset.tres" id="3_uicob"]
 [ext_resource type="PackedScene" uid="uid://cd86g4vam4445" path="res://Scenes/Player/Player.tscn" id="4_aww4n"]
 [ext_resource type="PackedScene" uid="uid://dmm56vffjj30r" path="res://Scenes/World/enemy_spawner.tscn" id="5_yb11b"]
 [ext_resource type="PackedScene" uid="uid://n8wlch8tbxef" path="res://Scenes/Enemies/Slime.tscn" id="6_tvwl2"]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" node_paths=PackedStringArray("spawners")]
+script = ExtResource("1_io8vi")
+spawners = [NodePath("Spawners/EnemySpawner"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4")]
 
 [node name="Objects" type="Node" parent="."]
 
@@ -71,22 +74,28 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -13.4)
 enemy_scene = ExtResource("6_tvwl2")
 target = NodePath("../../Player/Player")
-spawn_interval = 0.5
 
 [node name="EnemySpawner2" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -13.4)
 enemy_scene = ExtResource("6_tvwl2")
 target = NodePath("../../Player/Player")
-spawn_interval = 0.5
 
 [node name="EnemySpawner3" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 11.4)
 enemy_scene = ExtResource("6_tvwl2")
 target = NodePath("../../Player/Player")
-spawn_interval = 0.5
 
 [node name="EnemySpawner4" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 11.4)
 enemy_scene = ExtResource("6_tvwl2")
 target = NodePath("../../Player/Player")
-spawn_interval = 0.5
+
+[node name="WaveCDTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="WaveCDTimer" to="." method="_on_wave_cd_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

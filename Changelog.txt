@@ -1,2 +1,6 @@
 12/05/24
 	- Created basic game world, basic player, basic enemy ai, and enemy ai spawner
+
+12/07/24
+	- Tweaked spawner so that it can be activated on demand, useful for future wave system
+	- Fixed enemy collision issues 

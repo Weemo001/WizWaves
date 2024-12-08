@@ -39,7 +39,7 @@ func take_damage(amount: float):
 	print("Player took " + str(amount) + " damage!") # DEBUG
 	health -= amount
 	if health <= 0:
-		die()
+		_die()
 		
-func die():
+func _die():
 	print("Player has died!") # DEBUG

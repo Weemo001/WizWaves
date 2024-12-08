@@ -7,11 +7,7 @@
 [node name="EnemySpawner" type="Node3D"]
 script = ExtResource("1_hhtf0")
 
-[node name="SpawnTimer" type="Timer" parent="."]
-
 [node name="SpawnArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
 shape = SubResource("BoxShape3D_emljr")
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
