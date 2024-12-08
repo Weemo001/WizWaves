@@ -91,7 +91,6 @@ enemy_scene = ExtResource("6_tvwl2")
 target = NodePath("../../Player/Player")
 
 [node name="WaveCDTimer" type="Timer" parent="."]
-one_shot = true
 autostart = true
 
 [node name="SpawnTimer" type="Timer" parent="."]

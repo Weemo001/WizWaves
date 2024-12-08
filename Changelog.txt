@@ -4,3 +4,5 @@
 12/07/24
 	- Tweaked spawner so that it can be activated on demand, useful for future wave system
 	- Fixed enemy collision issues 
+	- Changed spawning behavior of spawners 
+	- Setup basic wave logic in main scene script
