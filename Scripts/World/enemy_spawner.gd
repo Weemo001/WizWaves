@@ -5,17 +5,31 @@ extends Node3D
 @export var spawn_interval: float = 1.0 
 @export var max_enemies: int = 10
 
-var active_enemies: Array = []
+var active_enemy_count = 0
 
 func _ready():
+	# On load, set timer wait time to spawn interval
 	$SpawnTimer.wait_time = spawn_interval
-	$SpawnTimer.start()
-	
-func spawn_enemy():
-	# Check if max enemy limit has been reached
-	if active_enemies.size() >= max_enemies:
+
+func _input(event):
+	# DEV TOOL - If dev key is pressed, start the spawner
+	if event.is_action_pressed("dev1"):
+		print("Spawner Active!") # DEBUG
+		$SpawnTimer.start()
+
+func _on_spawn_timer_timeout() -> void:
+	# When timer timeouts, if max enemy limit has been reached, stop the timer, clear the enemy counter
+	if active_enemy_count == max_enemies:
+		$SpawnTimer.stop()
+		active_enemy_count = 0
+		print("Spawner Deactivated.") # DEBUG
 		return
-	
+	# Otherwise increment enemy counter and spawn an enemy
+	else:
+		active_enemy_count += 1
+		spawn_enemy()
+
+func spawn_enemy():
 	# Instance a new enemy
 	var enemy = enemy_scene.instantiate()
 	
@@ -34,16 +48,6 @@ func spawn_enemy():
 	var spawn_position = $SpawnArea.global_position + random_offset
 	enemy.transform.origin = spawn_position
 	
-	# Add enemy to scene, set target, and track it in list
+	# Add enemy to scene, set target
 	enemy.target = target
 	get_parent().add_child(enemy)
-	active_enemies.append(enemy)
-	
-	# Remove enemy from list when deleted
-	enemy.connect("tree_exited", on_enemy_removed)
-
-func on_enemy_removed(enemy):
-	active_enemies.erase(enemy)
-	
-func _on_spawn_timer_timeout() -> void:
-	spawn_enemy()

@@ -61,32 +61,32 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Player2" type="Node" parent="."]
+[node name="Player" type="Node" parent="."]
 
-[node name="Player" parent="Player2" instance=ExtResource("4_aww4n")]
+[node name="Player" parent="Player" instance=ExtResource("4_aww4n")]
 
 [node name="Spawners" type="Node" parent="."]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("5_yb11b")]
+[node name="EnemySpawner" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -13.4)
 enemy_scene = ExtResource("6_tvwl2")
-target = NodePath("../Player2/Player")
+target = NodePath("../../Player/Player")
 spawn_interval = 0.5
 
-[node name="EnemySpawner2" parent="." instance=ExtResource("5_yb11b")]
+[node name="EnemySpawner2" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -13.4)
 enemy_scene = ExtResource("6_tvwl2")
-target = NodePath("../Player2/Player")
+target = NodePath("../../Player/Player")
 spawn_interval = 0.5
 
-[node name="EnemySpawner3" parent="." instance=ExtResource("5_yb11b")]
+[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 11.4)
 enemy_scene = ExtResource("6_tvwl2")
-target = NodePath("../Player2/Player")
+target = NodePath("../../Player/Player")
 spawn_interval = 0.5
 
-[node name="EnemySpawner4" parent="." instance=ExtResource("5_yb11b")]
+[node name="EnemySpawner4" parent="Spawners" instance=ExtResource("5_yb11b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 11.4)
 enemy_scene = ExtResource("6_tvwl2")
-target = NodePath("../Player2/Player")
+target = NodePath("../../Player/Player")
 spawn_interval = 0.5

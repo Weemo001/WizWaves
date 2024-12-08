@@ -9,29 +9,33 @@ var can_attack: bool = true
 var is_in_range: bool = false
 
 func _ready() -> void:
+	# Set the wait time of the damage timer to the tick time variable
 	$DamageTimer.wait_time = damage_tick
 
 func _physics_process(_delta: float) -> void:
-	# Check if target is assigned
+	# Move towards player and try to attack
+	move_towards_player()
+	try_attack()
+
+func move_towards_player():
+	# If target variable is assigned, set the direction to the face it and move towards it 
 	if target:
-		# Move towards target
 		var direction = (get_node(target).global_position - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
-	
-	# Check if in range, can attack, and player isn't dead, then call the damage function on the player to deal damage
+
+func try_attack():
+	# Try to attack the player if they are in range and attack is off cooldown and target is not dead, then start attack cooldown
 	if is_in_range && can_attack && get_node(target).health > 0:
 		get_node(target).take_damage(damage)
-		attack_cooldown()
-
-# Cooldown for the attack so that the enemy isn't constantly attacking while colliding
-func attack_cooldown():
-	can_attack = false
-	$DamageTimer.start()
+		can_attack = false
+		$DamageTimer.start()
 
 func _on_damage_timer_timeout():
+	# Make the enemy able to attack when the attack cooldown timer ends
 	can_attack = true
 
+# Area3D collision detection functions: enter/exit
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		is_in_range = true

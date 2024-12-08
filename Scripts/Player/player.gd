@@ -35,10 +35,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func take_damage(amount: float):
-	print("Player took " + str(amount) + " damage!")
+	# Reduce health by amount, if health is 0, kill player
+	print("Player took " + str(amount) + " damage!") # DEBUG
 	health -= amount
 	if health <= 0:
 		die()
 		
 func die():
-	print("Player has died!")
+	print("Player has died!") # DEBUG
