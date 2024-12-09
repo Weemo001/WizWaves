@@ -5,4 +5,3 @@
 [resource]
 shading_mode = 0
 albedo_texture = ExtResource("1_lkt5f")
-texture_filter = 0

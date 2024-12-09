@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera_origin: Node3D = $"Camera Origin"
 @onready var visuals: Node3D = $Visuals
 @onready var bullet = preload("res://Scenes/Player/projectile.tscn")
+@onready var animation_player: AnimationPlayer = $Visuals/Player/AnimationPlayer
 
 @export var SPEED = 5.0
 @export var sensitivity = 0.5
@@ -43,10 +44,15 @@ func _physics_process(_delta: float) -> void:
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		visuals.look_at(position + direction) # Rotate player visuals towards movement direction
+		if animation_player.current_animation != "Player_Anim": # Animate player
+			animation_player.play("Player_Anim")
+		
+		visuals.look_at(position + direction)  # Rotate player visuals towards movement direction
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		animation_player.stop() # Animate player
+		
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	

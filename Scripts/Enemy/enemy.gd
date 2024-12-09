@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var animation_player: AnimationPlayer = $Visuals/Slime/AnimationPlayer
+
 @export var speed: float = 3.0
 @export var damage: float = 1.0
 @export var damage_tick: float = 1.0
@@ -14,6 +16,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	# Move towards player and try to attack
+	animation_player.play("Slime_ArmatureAction")
+	
 	_move_towards_player()
 	_try_attack()
 
