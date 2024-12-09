@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var camera_origin: Node3D = $"Camera Origin"
 @onready var visuals: Node3D = $Visuals
+@onready var bullet = preload("res://Scenes/Player/projectile.tscn")
+
 @export var SPEED = 5.0
 @export var sensitivity = 0.5
 @export var health = 10
@@ -23,6 +25,10 @@ func _input(event):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+
 func _physics_process(_delta: float) -> void:
 	# Player movement 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -37,6 +43,13 @@ func _physics_process(_delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
+
+func shoot():
+	if bullet:
+		var bullet_instance = bullet.instantiate()
+		bullet_instance.global_position = $ProjectileSpawn.global_position
+		bullet_instance.direction = -global_transform.basis.z.normalized()
+		get_parent().add_child(bullet_instance)
 
 func take_damage(amount: float):
 	# Reduce health by amount, if health is 0, kill player

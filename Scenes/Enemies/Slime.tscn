@@ -15,8 +15,6 @@ albedo_color = Color(0, 0.644485, 0.260874, 1)
 radius = 0.517937
 
 [node name="Slime" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_h01s2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
