@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://dpo3xvwi33bk" path="res://Textures/Enemy/Slime/MT_Slime_Tex.png" id="1_2lny3"]
 
 [resource]
-shading_mode = 0
+diffuse_mode = 3
 albedo_texture = ExtResource("1_2lny3")

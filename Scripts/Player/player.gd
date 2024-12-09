@@ -33,7 +33,7 @@ func _input(event):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# When holding or pressing shoot button, shoot bullet at rate defined by shoot_interval
 	if Input.is_action_pressed("shoot") && $ShootTimer.is_stopped():
 		$ShootTimer.start()
@@ -59,11 +59,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func shoot():
-	# Create an instance of the bullet, set its position, direction, and spawn it
+	# Create an instance of the bullet, add it, set its position and direction
 	var bullet_instance = bullet.instantiate()
+	get_parent().add_child(bullet_instance)
 	bullet_instance.global_position = $ProjectileSpawn.global_position
 	bullet_instance.direction = -global_transform.basis.z.normalized()
-	get_parent().add_child(bullet_instance)
 
 func take_damage(amount: float):
 	# Reduce health by amount, if health is 0, kill player

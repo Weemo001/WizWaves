@@ -13,4 +13,6 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider().is_in_group("enemy"):
 			collision.get_collider().queue_free()
 			Global.active_enemies.pop_back()
-		queue_free()
+			queue_free()
+		if collision.get_collider().is_in_group("world"):
+			queue_free()

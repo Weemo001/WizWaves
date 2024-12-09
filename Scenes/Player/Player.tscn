@@ -50,7 +50,7 @@ _data = {
 "Player_Anim": SubResource("Animation_xoylc")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_xw2u1")
 SPEED = 10.0
@@ -95,7 +95,7 @@ margin = 0.5
 fov = 90.0
 
 [node name="ProjectileSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41855, -0.875774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752559, -0.975894)
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true

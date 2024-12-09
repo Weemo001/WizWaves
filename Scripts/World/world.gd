@@ -9,15 +9,6 @@ extends Node
 var wave_counter: int = 0
 var enemies_spawned_per_wave = 0
 
-func _input(event): # DEBUG
-	if event.is_action_pressed("dev1"):
-		for e in Global.active_enemies:
-			e.queue_free()
-		Global.active_enemies.clear()
-		
-		if Global.active_enemies.size() == 0:
-			print("Cleared enemies.")
-
 func _ready():
 	$Timers/WaveCDTimer.wait_time = time_between_waves
 	$Timers/SpawnTimer.wait_time = spawn_interval
@@ -28,7 +19,7 @@ func _on_wave_cd_timer_timeout() -> void:
 		wave_counter += 1
 		
 		# Simple ramping difficulty modifier
-		max_enemies = 20 * pow(difficulty_mod, wave_counter - 1)
+		max_enemies = 20 * round(pow(difficulty_mod, wave_counter - 1))
 		
 		enemies_spawned_per_wave = 0
 		print("Wave: " + str(wave_counter) + " Enemies: " + str(max_enemies))

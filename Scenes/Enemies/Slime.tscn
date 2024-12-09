@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://n8wlch8tbxef"]
+[gd_scene load_steps=8 format=4 uid="uid://n8wlch8tbxef"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_h01s2"]
 [ext_resource type="Material" uid="uid://dllwef4jsi7qw" path="res://Materials/Material_Slime.tres" id="2_khkfb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ebl0g"]
-radius = 0.507167
+radius = 0.390267
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qh4bv"]
 resource_name = "Slime_Sphere_001"
@@ -50,9 +50,6 @@ _data = {
 "Slime_ArmatureAction": SubResource("Animation_gcr3p")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_dhuvl"]
-radius = 0.517937
-
 [node name="Slime" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_h01s2")
 
@@ -87,12 +84,4 @@ libraries = {
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_dhuvl")
-
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

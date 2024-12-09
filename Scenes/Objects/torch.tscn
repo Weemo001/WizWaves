@@ -2,4 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://rtrctylmgyfv" path="res://Models/World/torch.glb" id="1_crlh7"]
 
-[node name="torch" instance=ExtResource("1_crlh7")]
+[node name="torch" groups=["world"] instance=ExtResource("1_crlh7")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0730544, 0.337562, 0)
+light_size = 1.0
+shadow_enabled = true

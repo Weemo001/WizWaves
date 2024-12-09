@@ -2,4 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://wlbv2c0gcrga" path="res://Models/World/gate.glb" id="1_ye81b"]
 
-[node name="gate" instance=ExtResource("1_ye81b")]
+[node name="gate" groups=["world"] instance=ExtResource("1_ye81b")]
+
+[node name="CollisionShape3D" parent="Gate/StaticBody3D" index="0"]
+visible = false
+disabled = true

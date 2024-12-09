@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://blj5yhi38j7eb" path="res://Textures/World/WW_Dungeon_Tex.png" id="1_u36b0"]
 
 [resource]
-shading_mode = 0
+diffuse_mode = 3
 albedo_texture = ExtResource("1_u36b0")

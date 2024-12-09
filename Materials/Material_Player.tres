@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://cc04uoiqxnr31" path="res://Textures/Player/Player_Tex.png" id="1_uyj1g"]
 
 [resource]
-shading_mode = 0
+diffuse_mode = 3
 albedo_texture = ExtResource("1_uyj1g")

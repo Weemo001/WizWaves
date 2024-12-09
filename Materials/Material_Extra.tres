@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://vqkleetubi5q" path="res://Textures/World/WW_WorldExtra_Tex.png" id="1_lkt5f"]
 
 [resource]
-shading_mode = 0
+diffuse_mode = 3
 albedo_texture = ExtResource("1_lkt5f")
