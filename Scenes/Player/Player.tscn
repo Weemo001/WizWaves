@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_xw2u1"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jouk3"]
+radius = 0.606471
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxhp4"]
 shading_mode = 0
 albedo_color = Color(1, 0, 0, 1)
@@ -13,28 +16,28 @@ shading_mode = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_my1lv"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jouk3"]
-radius = 0.606471
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_mask = 2
 script = ExtResource("1_xw2u1")
 SPEED = 10.0
 
-[node name="Body Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_override = SubResource("StandardMaterial3D_uxhp4")
-mesh = SubResource("CapsuleMesh_ruwqd")
-
-[node name="Eye" type="MeshInstance3D" parent="Body Mesh"]
-transform = Transform3D(0.657457, 0, 0, 0, 0.470263, 0, 0, 0, 0.618457, 0, 0.45484, -0.276299)
-material_override = SubResource("StandardMaterial3D_valx6")
-mesh = SubResource("SphereMesh_my1lv")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_jouk3")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Body Mesh" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_uxhp4")
+mesh = SubResource("CapsuleMesh_ruwqd")
+skeleton = NodePath("../..")
+
+[node name="Eye" type="MeshInstance3D" parent="Visuals/Body Mesh"]
+transform = Transform3D(0.657457, 0, 0, 0, 0.470263, 0, 0, 0, 0.618457, 0, 0.45484, -0.276299)
+material_override = SubResource("StandardMaterial3D_valx6")
+mesh = SubResource("SphereMesh_my1lv")
 
 [node name="Camera Origin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)

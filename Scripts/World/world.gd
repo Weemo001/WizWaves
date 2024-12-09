@@ -19,12 +19,12 @@ func _input(event): # DEBUG
 			print("Cleared enemies.")
 
 func _ready():
-	$WaveCDTimer.wait_time = time_between_waves
-	$SpawnTimer.wait_time = spawn_interval
+	$Timers/WaveCDTimer.wait_time = time_between_waves
+	$Timers/SpawnTimer.wait_time = spawn_interval
 
 func _on_wave_cd_timer_timeout() -> void:
 	# Timer is always running, but only executes the spawning sequence code when the spawntimer is stopped, and the array of tracked enemies is empty
-	if $SpawnTimer.is_stopped() && Global.active_enemies.size() == 0:
+	if $Timers/SpawnTimer.is_stopped() && Global.active_enemies.size() == 0:
 		wave_counter += 1
 		
 		# Simple ramping difficulty modifier
@@ -33,7 +33,7 @@ func _on_wave_cd_timer_timeout() -> void:
 		enemies_spawned_per_wave = 0
 		print("Wave: " + str(wave_counter) + " Enemies: " + str(max_enemies))
 		
-		$SpawnTimer.start()
+		$Timers/SpawnTimer.start()
 
 func _on_spawn_timer_timeout() -> void:
 	# As long as the amount of enemies this wave hasn't maxed out, keep spawning enemies on every spawner.
@@ -41,4 +41,4 @@ func _on_spawn_timer_timeout() -> void:
 		for s in spawners:
 			s.spawn_enemy()
 			enemies_spawned_per_wave += 1
-		$SpawnTimer.start()
+		$Timers/SpawnTimer.start()

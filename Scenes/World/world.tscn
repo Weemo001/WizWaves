@@ -90,11 +90,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 11.4)
 enemy_scene = ExtResource("6_tvwl2")
 target = NodePath("../../Player/Player")
 
-[node name="WaveCDTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="WaveCDTimer" type="Timer" parent="Timers"]
 autostart = true
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[connection signal="timeout" from="WaveCDTimer" to="." method="_on_wave_cd_timer_timeout"]
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timers/WaveCDTimer" to="." method="_on_wave_cd_timer_timeout"]
+[connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
