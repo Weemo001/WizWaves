@@ -2,7 +2,7 @@ extends Node
 
 @export var time_between_waves: float = 1.0 # sec
 @export var spawn_interval: float = 0.5 # sec
-@export var max_enemies: int = 20
+@export var max_enemies: float = 20.0
 @export var spawners: Array[Node3D] = []
 @export var difficulty_mod: float = 1.2
 
@@ -19,10 +19,10 @@ func _on_wave_cd_timer_timeout() -> void:
 		wave_counter += 1
 		
 		# Simple ramping difficulty modifier
-		max_enemies = 20 * round(pow(difficulty_mod, wave_counter - 1))
+		max_enemies = 20 * pow(difficulty_mod, wave_counter - 1)
 		
 		enemies_spawned_per_wave = 0
-		print("Wave: " + str(wave_counter) + " Enemies: " + str(max_enemies))
+		print("Wave: " + str(wave_counter) + " Enemies: " + str(round((max_enemies))))
 		
 		$Timers/SpawnTimer.start()
 

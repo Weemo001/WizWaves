@@ -2,13 +2,13 @@ extends CharacterBody3D
 
 @onready var camera_origin: Node3D = $"Camera Origin"
 @onready var visuals: Node3D = $Visuals
-@onready var bullet = preload("res://Scenes/Player/projectile.tscn")
 @onready var animation_player: AnimationPlayer = $Visuals/Player/AnimationPlayer
 
 @export var SPEED = 5.0
 @export var sensitivity = 0.5
 @export var shoot_interval = 0.3
 @export var health = 10
+@export var bullet: PackedScene
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -59,11 +59,16 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func shoot():
-	# Create an instance of the bullet, add it, set its position and direction
+	# Create an instance of the bullet, add it, set its position and direction, disable particle emission temporarily
 	var bullet_instance = bullet.instantiate()
+	bullet_instance.get_node("Visuals/CPUParticles3D").emitting = false
 	get_parent().add_child(bullet_instance)
 	bullet_instance.global_position = $ProjectileSpawn.global_position
 	bullet_instance.direction = -global_transform.basis.z.normalized()
+	
+	# Set the orientation of the bullet, and turn on the particle emission. This prevents the particles from showing up briefly at 0,0
+	bullet_instance.look_at(bullet_instance.global_position + bullet_instance.direction, Vector3.UP)
+	bullet_instance.get_node("Visuals/CPUParticles3D").emitting = true
 
 func take_damage(amount: float):
 	# Reduce health by amount, if health is 0, kill player

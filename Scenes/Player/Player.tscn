@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://cd86g4vam4445"]
+[gd_scene load_steps=9 format=4 uid="uid://cd86g4vam4445"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_xw2u1"]
 [ext_resource type="Material" uid="uid://b0frlwu68o6rk" path="res://Materials/Material_Player.tres" id="2_fjtm8"]
+[ext_resource type="PackedScene" uid="uid://bkgef3plv8nai" path="res://Scenes/Player/projectile.tscn" id="2_uspnu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jouk3"]
 radius = 0.606471
@@ -54,6 +55,7 @@ _data = {
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_xw2u1")
 SPEED = 10.0
+bullet = ExtResource("2_uspnu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

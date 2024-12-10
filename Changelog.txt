@@ -9,4 +9,5 @@
 12/08/24
 	- Projectile system & enemy killing
 	- Reworked collision systems across the board to use groups instead of Area3Ds
-	- Player & Enemy models & animations
+	- Player & Enemy models & animations\
+	- Basic Lighting
