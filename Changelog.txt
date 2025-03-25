@@ -11,3 +11,8 @@
 	- Reworked collision systems across the board to use groups instead of Area3Ds
 	- Player & Enemy models & animations\
 	- Basic Lighting
+
+3/25/24
+	- Casual four month break. Oops.
+	- Added UI elements: Main menu, in-game UI
+	- Small tweaks to how enemies do damage to player
