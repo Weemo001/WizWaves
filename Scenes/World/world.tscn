@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://mwha5hojyas8"]
 
 [ext_resource type="PackedScene" uid="uid://fxyaba6k4gjf" path="res://Scenes/Objects/gate.tscn" id="1_0g3ou"]
-[ext_resource type="Script" path="res://Scripts/World/world.gd" id="1_io8vi"]
+[ext_resource type="Script" uid="uid://bji5asio6sews" path="res://Scripts/World/world.gd" id="1_io8vi"]
 [ext_resource type="PackedScene" uid="uid://druhbl0lql6u" path="res://Scenes/Objects/torch.tscn" id="2_47qaq"]
 [ext_resource type="MeshLibrary" uid="uid://b72eya0hnevef" path="res://MeshLib/meshlib_dungeontileset.tres" id="3_uicob"]
 [ext_resource type="PackedScene" uid="uid://cd86g4vam4445" path="res://Scenes/Player/Player.tscn" id="4_aww4n"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://n8wlch8tbxef"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_h01s2"]
+[ext_resource type="Script" uid="uid://b3046jpxbhy0p" path="res://Scripts/Enemy/enemy.gd" id="1_h01s2"]
 [ext_resource type="Material" uid="uid://dllwef4jsi7qw" path="res://Materials/Material_Slime.tres" id="2_khkfb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ebl0g"]
@@ -47,7 +47,7 @@ tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.0333333, 1, 1, 1, 1, 0.06666
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b08tr"]
 _data = {
-"Slime_ArmatureAction": SubResource("Animation_gcr3p")
+&"Slime_ArmatureAction": SubResource("Animation_gcr3p")
 }
 
 [node name="Slime" type="CharacterBody3D" groups=["enemy"]]

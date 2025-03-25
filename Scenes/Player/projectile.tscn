@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkgef3plv8nai"]
 
-[ext_resource type="Script" path="res://Scripts/Player/projectile.gd" id="1_hpmvs"]
+[ext_resource type="Script" uid="uid://bla58gm8uannv" path="res://Scripts/Player/projectile.gd" id="1_hpmvs"]
 [ext_resource type="PackedScene" uid="uid://dfaudkex3t2of" path="res://Models/Player/Projectile.glb" id="2_b03kp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc0v0"]

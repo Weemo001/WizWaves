@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://cd86g4vam4445"]
 
-[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_xw2u1"]
+[ext_resource type="Script" uid="uid://df75yc4ru1ypr" path="res://Scripts/Player/player.gd" id="1_xw2u1"]
 [ext_resource type="Material" uid="uid://b0frlwu68o6rk" path="res://Materials/Material_Player.tres" id="2_fjtm8"]
 [ext_resource type="PackedScene" uid="uid://bkgef3plv8nai" path="res://Scenes/Player/projectile.tscn" id="2_uspnu"]
 
@@ -48,7 +48,7 @@ tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.0333333, 1, 1, 1, 1, 0.06666
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c5yxe"]
 _data = {
-"Player_Anim": SubResource("Animation_xoylc")
+&"Player_Anim": SubResource("Animation_xoylc")
 }
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
