@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://clg1kr4gsvlcr"]
+[gd_scene load_steps=5 format=3 uid="uid://clg1kr4gsvlcr"]
 
 [ext_resource type="Script" uid="uid://dll5nkk3wfh70" path="res://Scripts/UI/game_ui.gd" id="1_3fiko"]
+
+[sub_resource type="Theme" id="Theme_3fiko"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64xju"]
 bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.352941)
@@ -23,84 +25,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_3fiko")
 script = ExtResource("1_3fiko")
 
-[node name="HealthbarRoot" type="Node" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.85
+offset_top = -157.59
+offset_right = 130.85
+offset_bottom = -44.5901
+grow_vertical = 0
 
-[node name="Healthbar" type="ProgressBar" parent="HealthbarRoot"]
-offset_left = 61.0
-offset_top = 999.0
-offset_right = 351.0
-offset_bottom = 1026.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Score: "
+
+[node name="Wave" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Wave: "
+
+[node name="Enemies" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Enemies: "
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.89
+offset_top = -40.475
+offset_right = 300.89
+offset_bottom = -13.475
+grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_64xju")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3fiko")
 max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="HealthbarText" type="Label" parent="HealthbarRoot"]
-offset_left = 189.0
-offset_top = 1001.0
-offset_right = 241.0
-offset_bottom = 1024.0
+[node name="HealthbarText" type="Label" parent="Healthbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -17.5
+offset_right = 26.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
 text = "HP"
-
-[node name="WaveCounterRoot" type="Node" parent="."]
-
-[node name="WaveText" type="Label" parent="WaveCounterRoot"]
-offset_left = 70.0
-offset_top = 920.0
-offset_right = 134.0
-offset_bottom = 948.0
-theme_override_font_sizes/font_size = 20
-text = "Wave: "
-metadata/_edit_use_anchors_ = true
-
-[node name="WaveCounter" type="Label" parent="WaveCounterRoot"]
-offset_left = 141.0
-offset_top = 920.0
-offset_right = 181.0
-offset_bottom = 948.0
-theme_override_font_sizes/font_size = 20
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="EnemyCounterRoot" type="Node" parent="."]
-
-[node name="EnemyText" type="Label" parent="EnemyCounterRoot"]
-offset_left = 70.0
-offset_top = 960.0
-offset_right = 134.0
-offset_bottom = 988.0
-theme_override_font_sizes/font_size = 20
-text = "Enemies:"
-metadata/_edit_use_anchors_ = true
-
-[node name="EnemyCounter" type="Label" parent="EnemyCounterRoot"]
-offset_left = 170.0
-offset_top = 960.0
-offset_right = 210.0
-offset_bottom = 988.0
-theme_override_font_sizes/font_size = 20
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="ScoreRoot" type="Node" parent="."]
-
-[node name="ScoreText" type="Label" parent="ScoreRoot"]
-offset_left = 70.0
-offset_top = 881.0
-offset_right = 157.0
-offset_bottom = 909.0
-theme_override_font_sizes/font_size = 20
-text = "Score:"
-metadata/_edit_use_anchors_ = true
-
-[node name="ScoreCounter" type="Label" parent="ScoreRoot"]
-offset_left = 141.0
-offset_top = 881.0
-offset_right = 181.0
-offset_bottom = 909.0
-theme_override_font_sizes/font_size = 20
-text = "0"
-metadata/_edit_use_anchors_ = true

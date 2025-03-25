@@ -13,19 +13,31 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_i2xx2")
 script = ExtResource("1_5wsvm")
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -241.5
-offset_top = -287.0
+offset_top = -300.0
 offset_right = 241.5
-offset_bottom = -150.0
+offset_bottom = -163.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "WizWaves"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Main" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,25 +45,62 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -87.0
+offset_top = -135.5
 offset_right = 200.0
-offset_bottom = 87.0
+offset_bottom = 135.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="Main/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_i2xx2")
 text = "Play"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="How to Play" type="Button" parent="Main/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_i2xx2")
+text = "How to Play"
+
+[node name="Quit" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="HowToPlay" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HowToPlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -135.5
+offset_right = 200.0
+offset_bottom = 135.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Info" type="Label" parent="HowToPlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "WASD: Move
+Mouse: Aim
+LMB: Fire"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="HowToPlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/How to Play" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HowToPlay/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
