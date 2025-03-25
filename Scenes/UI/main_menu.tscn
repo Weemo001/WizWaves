@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dodq051mswsg5"]
+
+[ext_resource type="Script" uid="uid://corq6ipx5p4yq" path="res://Scripts/UI/main_menu.gd" id="1_5wsvm"]
+[ext_resource type="Theme" uid="uid://ph38sy2oaniy" path="res://Themes/ui_theme.tres" id="2_i2xx2"]
+
+[node name="Menu" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wsvm")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_left = -241.5
+offset_top = -287.0
+offset_right = 241.5
+offset_bottom = -150.0
+theme_override_font_sizes/font_size = 100
+text = "WizWaves"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -87.0
+offset_right = 200.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_i2xx2")
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_i2xx2")
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

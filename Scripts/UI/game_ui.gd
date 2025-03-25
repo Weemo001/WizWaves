@@ -11,7 +11,7 @@ func update_health(new_health: int):
 func update_wave(new_wave: int):
 	wave_counter.text = str(new_wave)
 
-# Bad way of doing this, but I would have had to redo my codebase for enemy spawning and despawning which I don't want to do for this project lol
+# Bad way of doing this to update stuff that isn't updating every tick, but I don't want to redo codebase for this project lol
 func _process(_delta: float) -> void:
 	enemy_counter.text = str(Global.active_enemies.size())
 	score_counter.text = str(Global.score)
