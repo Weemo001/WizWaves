@@ -9,6 +9,8 @@ extends Node
 var wave_counter: int = 0
 var enemies_spawned_per_wave = 0
 
+signal wave_change(wave_count)
+
 func _ready():
 	$Timers/WaveCDTimer.wait_time = time_between_waves
 	$Timers/SpawnTimer.wait_time = spawn_interval
@@ -17,6 +19,7 @@ func _on_wave_cd_timer_timeout() -> void:
 	# Timer is always running, but only executes the spawning sequence code when the spawntimer is stopped, and the array of tracked enemies is empty
 	if $Timers/SpawnTimer.is_stopped() && Global.active_enemies.size() == 0:
 		wave_counter += 1
+		wave_change.emit(wave_counter)
 		
 		# Simple ramping difficulty modifier
 		max_enemies = 20 * pow(difficulty_mod, wave_counter - 1)

@@ -122,6 +122,7 @@ autostart = true
 [node name="SpawnTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[connection signal="health_changed" from="Player/Player" to="GameUi" method="update"]
+[connection signal="wave_change" from="." to="GameUi" method="update_wave"]
+[connection signal="health_changed" from="Player/Player" to="GameUi" method="update_health"]
 [connection signal="timeout" from="Timers/WaveCDTimer" to="." method="_on_wave_cd_timer_timeout"]
 [connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
