@@ -52,7 +52,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_xw2u1")
 SPEED = 10.0
 bullet = ExtResource("2_uspnu")
@@ -83,7 +82,7 @@ skin = SubResource("Skin_fx3im")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/Player"]
 libraries = {
-"": SubResource("AnimationLibrary_c5yxe")
+&"": SubResource("AnimationLibrary_c5yxe")
 }
 
 [node name="Camera Origin" type="Node3D" parent="."]

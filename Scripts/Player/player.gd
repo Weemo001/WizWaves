@@ -4,11 +4,13 @@ extends CharacterBody3D
 @onready var visuals: Node3D = $Visuals
 @onready var animation_player: AnimationPlayer = $Visuals/Player/AnimationPlayer
 
+@export var health = 10
 @export var SPEED = 5.0
 @export var sensitivity = 0.5
 @export var shoot_interval = 0.3
-@export var health = 10
 @export var bullet: PackedScene
+
+signal health_changed(new_health)
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -74,6 +76,7 @@ func take_damage(amount: float):
 	# Reduce health by amount, if health is 0, kill player
 	print("Player took " + str(amount) + " damage!") # DEBUG
 	health -= amount
+	health_changed.emit(health)
 	if health <= 0:
 		_die()
 		

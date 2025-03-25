@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://clg1kr4gsvlcr"]
+
+[ext_resource type="Script" uid="uid://dll5nkk3wfh70" path="res://Scripts/UI/game_ui.gd" id="1_3fiko"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64xju"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.352941)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fiko"]
+bg_color = Color(1, 0, 0, 0.352941)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3fiko")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 999.0
+offset_right = 351.0
+offset_bottom = 1026.0
+theme_override_styles/background = SubResource("StyleBoxFlat_64xju")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3fiko")
+max_value = 10.0
+value = 10.0
+show_percentage = false
