@@ -13,7 +13,6 @@ extends CharacterBody3D
 signal health_changed(new_health)
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$ShootTimer.wait_time = shoot_interval
 
 func _input(event):
@@ -30,10 +29,6 @@ func _input(event):
 	if event.is_action_released("shoot"):
 		if not $ShootTimer.is_stopped():
 			$ShootTimer.stop()
-	
-	# Quit game on button press
-	if event.is_action_pressed("quit"):
-		get_tree().quit()
 
 func _process(_delta: float) -> void:
 	# When holding or pressing shoot button, shoot bullet at rate defined by shoot_interval

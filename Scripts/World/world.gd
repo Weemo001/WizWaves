@@ -6,14 +6,24 @@ extends Node
 @export var spawners: Array[Node3D] = []
 @export var difficulty_mod: float = 1.2
 
+@onready var pause_menu: Control = $Pause
+
 var wave_counter: int = 0
-var enemies_spawned_per_wave = 0
+var enemies_spawned_per_wave: int = 0
 
 signal wave_change(wave_count)
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Timers/WaveCDTimer.wait_time = time_between_waves
 	$Timers/SpawnTimer.wait_time = spawn_interval
+
+func _input(event: InputEvent) -> void:
+	# Pause game, show pause menu
+	if event.is_action_pressed("pause"):
+		get_tree().paused = true
+		pause_menu.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_wave_cd_timer_timeout() -> void:
 	# Timer is always running, but only executes the spawning sequence code when the spawntimer is stopped, and the array of tracked enemies is empty

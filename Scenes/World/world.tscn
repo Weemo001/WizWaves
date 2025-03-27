@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://mwha5hojyas8"]
+[gd_scene load_steps=13 format=3 uid="uid://mwha5hojyas8"]
 
 [ext_resource type="PackedScene" uid="uid://fxyaba6k4gjf" path="res://Scenes/Objects/gate.tscn" id="1_0g3ou"]
 [ext_resource type="Script" uid="uid://bji5asio6sews" path="res://Scripts/World/world.gd" id="1_io8vi"]
 [ext_resource type="PackedScene" uid="uid://druhbl0lql6u" path="res://Scenes/Objects/torch.tscn" id="2_47qaq"]
 [ext_resource type="PackedScene" uid="uid://clg1kr4gsvlcr" path="res://Scenes/UI/game_ui.tscn" id="2_fcotr"]
 [ext_resource type="MeshLibrary" uid="uid://b72eya0hnevef" path="res://MeshLib/meshlib_dungeontileset.tres" id="3_uicob"]
+[ext_resource type="PackedScene" uid="uid://uybgcu0d107m" path="res://Scenes/UI/pause_menu.tscn" id="3_y0d6x"]
 [ext_resource type="PackedScene" uid="uid://cd86g4vam4445" path="res://Scenes/Player/Player.tscn" id="4_aww4n"]
 [ext_resource type="PackedScene" uid="uid://dmm56vffjj30r" path="res://Scenes/World/enemy_spawner.tscn" id="5_yb11b"]
 [ext_resource type="PackedScene" uid="uid://n8wlch8tbxef" path="res://Scenes/Enemies/Slime.tscn" id="6_tvwl2"]
@@ -33,6 +34,9 @@ script = ExtResource("1_io8vi")
 spawners = [NodePath("Spawners/EnemySpawner"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4")]
 
 [node name="GameUi" parent="." instance=ExtResource("2_fcotr")]
+
+[node name="Pause" parent="." instance=ExtResource("3_y0d6x")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t3trb")
