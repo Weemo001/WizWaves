@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var bullet: PackedScene
 
 signal health_changed(new_health)
+signal player_death()
 
 func _ready():
 	$ShootTimer.wait_time = shoot_interval
@@ -73,10 +74,8 @@ func take_damage(amount: float):
 	health -= amount
 	health_changed.emit(health)
 	if health <= 0:
-		_die()
-		
-func _die():
-	print("Player has died!") # DEBUG
+		player_death.emit()
+		print("Player has died!") # DEBUG
 
 func _on_shoot_timer_timeout() -> void:
 	shoot()

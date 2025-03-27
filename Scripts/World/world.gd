@@ -7,6 +7,7 @@ extends Node
 @export var difficulty_mod: float = 1.2
 
 @onready var pause_menu: Control = $Pause
+@onready var gameover_menu: Control = $GameOver
 
 var wave_counter: int = 0
 var enemies_spawned_per_wave: int = 0
@@ -46,3 +47,8 @@ func _on_spawn_timer_timeout() -> void:
 			s.spawn_enemy()
 			enemies_spawned_per_wave += 1
 		$Timers/SpawnTimer.start()
+
+func _on_player_player_death() -> void:
+	get_tree().paused = true
+	gameover_menu.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
