@@ -19,3 +19,4 @@
 
 3/27/25
 	- Added pause menu functionality
+	- Added player death logic

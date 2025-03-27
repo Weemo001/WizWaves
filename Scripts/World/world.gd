@@ -48,7 +48,13 @@ func _on_spawn_timer_timeout() -> void:
 			enemies_spawned_per_wave += 1
 		$Timers/SpawnTimer.start()
 
+# Signal FROM Player - Pause game and show game over menu, also uncapture mouse
 func _on_player_player_death() -> void:
 	get_tree().paused = true
 	gameover_menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+# Signal FROM game_over scene - Clear the global array of enemies and reset the scene
+func _on_game_over_game_reset() -> void:
+	Global.active_enemies.clear()
+	get_tree().reload_current_scene()

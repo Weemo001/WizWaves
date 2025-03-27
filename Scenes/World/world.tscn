@@ -131,6 +131,7 @@ autostart = true
 one_shot = true
 
 [connection signal="wave_change" from="." to="GameUi" method="update_wave"]
+[connection signal="game_reset" from="GameOver" to="." method="_on_game_over_game_reset"]
 [connection signal="health_changed" from="Player/Player" to="GameUi" method="update_health"]
 [connection signal="player_death" from="Player/Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/WaveCDTimer" to="." method="_on_wave_cd_timer_timeout"]
