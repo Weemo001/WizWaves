@@ -14,14 +14,6 @@ grow_vertical = 2
 theme = ExtResource("1_jxkuk")
 script = ExtResource("2_wpaxx")
 
-[node name="GameOver" type="Label" parent="."]
-layout_mode = 2
-offset_left = 817.5
-offset_top = 379.0
-offset_right = 1102.5
-offset_bottom = 448.0
-text = "Game Over!"
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -46,6 +38,29 @@ text = "Restart"
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -227.37
+offset_right = 142.5
+offset_bottom = -85.37
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Over!"
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Score:"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

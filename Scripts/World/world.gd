@@ -52,9 +52,11 @@ func _on_spawn_timer_timeout() -> void:
 func _on_player_player_death() -> void:
 	get_tree().paused = true
 	gameover_menu.show()
+	gameover_menu.update_score()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-# Signal FROM game_over scene - Clear the global array of enemies and reset the scene
+# Signal FROM game_over scene - Clear the global array of enemies, zero score, and reset the scene
 func _on_game_over_game_reset() -> void:
 	Global.active_enemies.clear()
+	Global.score = 0
 	get_tree().reload_current_scene()
